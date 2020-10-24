@@ -1,12 +1,12 @@
-# Server - boilerplate
+# Server - boilerplate - with set passport auth and basic CRUD routes
 
 - **_Use this app as a starter code for your project._**
 - Follow these steps to clone project to your local machine:
 
 ```shell
-$ git clone https://github.com/sandrabosk/server-boilerplate.git
+$ git clone https://github.com/sandrabosk/server-boilerplate-with-passport.git
 
-$ cd server-boilerplate
+$ cd server-boilerplate-with-passport
 $ npm i
 $ npm run dev
 ```
@@ -16,5 +16,10 @@ $ npm run dev
 ## Auth related npm packages
 
 ```shell
-$ npm i bcryptjs connect-mongo cors express-session passport passport-local
+- bcryptjs
+- connect-mongo
+- cors
+- express-session
+- passport
+- passport-local
 ```

@@ -4,14 +4,14 @@
 - Follow these steps to clone project to your local machine:
 
 ```shell
-$ svn export https://github.com/Ironhack-Miami-PTWD-October-2019/module-3/tree/branches/full-stack-server
+$ git clone https://github.com/sandrabosk/server-boilerplate.git
 
-$ cd server
+$ cd server-boilerplate
 $ npm i
 $ npm run dev
 ```
 
-- To test your app, go to Postman. Now your routes will start with: `http://localhost:3001/`
+- To test your app, go to Postman. Now your routes will start with: `http://localhost:3001`
 
 ## Auth related npm packages
 

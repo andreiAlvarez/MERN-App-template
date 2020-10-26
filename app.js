@@ -5,11 +5,20 @@ const express = require('express');
 const favicon = require('serve-favicon');
 const logger = require('morgan');
 const path = require('path');
+const createError = require('http-errors');
 // require all the packages you install
 // ... here
 const cors = require('cors');
 
 const app = express();
+
+// Middleware Setup
+app.use(express.static(path.join(__dirname, 'public')));
+app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
+app.use(logger('dev'));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser());
 
 // require database configuration
 require('./configs/db.config');
@@ -24,12 +33,6 @@ app.use(
   })
 );
 
-// Middleware Setup
-app.use(logger('dev'));
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
-
 // require session
 // ... here
 require('./configs/session.config')(app);
@@ -38,13 +41,21 @@ require('./configs/session.config')(app);
 // ... here
 require('./configs/passport/passport.config.js')(app);
 
-app.use(express.static(path.join(__dirname, 'public')));
-app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
-
 // routes middleware
 app.use('/', require('./routes/index.routes'));
 app.use('/', require('./routes/author.routes'));
 app.use('/', require('./routes/book.routes'));
 app.use('/', require('./routes/authentication.routes'));
+
+// Catch missing routes and forward to error handler
+app.use((req, res, next) => {
+  next(createError(404));
+});
+
+// Catch all error handler
+app.use((error, req, res, next) => {
+  res.status(error.status || 500);
+  res.json({ type: 'error', error: { message: error.message } });
+});
 
 module.exports = app;

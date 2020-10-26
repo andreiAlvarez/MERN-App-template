@@ -1,4 +1,4 @@
-# Server - boilerplate - with set passport auth and basic CRUD routes
+# Server - boilerplate - with set passport auth, basic CRUD routes and file upload
 
 - **_Use this app as a starter code for your server in the full-stack project._**
 - Follow these steps to clone project to your local machine:
@@ -22,4 +22,12 @@ $ npm run dev
 - express-session
 - passport
 - passport-local
+```
+
+## File upload related npm packages
+
+```shell
+- cloudinary
+- multer-storage-cloudinary
+- multer
 ```
